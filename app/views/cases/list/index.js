@@ -1,5 +1,5 @@
 import { Router as createRouter } from 'express';
-import { asyncHandler } from '../../../util/async-handler.ts';
+import { asyncHandler } from '../../../util/async-handler.js';
 import { buildListCases } from './list.js';
 
 export function createRoutes() {

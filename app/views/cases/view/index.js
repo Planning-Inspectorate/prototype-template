@@ -11,7 +11,7 @@ import { questions } from '../questions.js';
 import { createJourney } from './journey.js';
 import { buildGetJourneyMiddleware } from './controller.js';
 import { buildSaveFn } from './edit.js';
-import { asyncHandler } from '../../../util/async-handler.ts';
+import { asyncHandler } from '../../../util/async-handler.js';
 
 export function createRoutes() {
 	const router = createRouter({ mergeParams: true });

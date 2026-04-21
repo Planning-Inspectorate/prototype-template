@@ -1,6 +1,6 @@
 import assert from 'node:assert';
 import { describe, it, mock } from 'node:test';
-import { asyncHandler } from './async-handler.ts';
+import { asyncHandler } from './async-handler.js';
 
 const error = new Error('some error');
 const req = {};
