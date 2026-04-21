@@ -4,9 +4,18 @@
     "serve": "govuk-prototype-kit serve",
     "start": "govuk-prototype-kit start"
   },
+  "type": "module",
   "dependencies": {
-    "@govuk-prototype-kit/common-templates": "2.0.1",
-    "govuk-frontend": "5.14.0",
-    "govuk-prototype-kit": "13.18.1"
+    "@govuk-prototype-kit/common-templates": "^3.0.0",
+    "@planning-inspectorate/dynamic-forms": "^3.9.0",
+    "accessible-autocomplete": "^3.0.1",
+    "express": "^5.2.1",
+    "express-validator": "^7.3.1",
+    "govuk-frontend": "^6.1.0",
+    "govuk-prototype-kit": "^13.20.0",
+    "nunjucks": "^3.2.4"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6"
   }
 }

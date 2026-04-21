@@ -1,0 +1,10 @@
+{% extends "layouts/main.njk" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% block content %}
+	{{ govukPanel({
+		titleText: "Case created",
+		html: "Case created with reference<br><strong>" + reference + "</strong>"
+	}) }}
+{% endblock %}
