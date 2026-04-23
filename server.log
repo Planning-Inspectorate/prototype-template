@@ -1,0 +1,153 @@
+
+> dev
+> govuk-prototype-kit dev
+
+GOV.UK Prototype Kit 13.20.0
+
+starting...
+WARNING: The `govuk-text-colour` mixin is deprecated. Use `color: govuk-colour(text)` instead. To silence this warning, update $govuk-suppressed-warnings with key: "govuk-text-colour"
+    node_modules/govuk-frontend/dist/govuk/settings/_warnings.scss 52:5               -warning()
+    node_modules/govuk-frontend/dist/govuk/helpers/_typography.scss 52:3              govuk-text-colour()
+    node_modules/@govuk-prototype-kit/common-templates/sass/_contents-list.scss 15:3  @import
+    .tmp/sass/_plugins.scss 5:9                                                       @import
+    node_modules/govuk-prototype-kit/lib/assets/sass/prototype.scss 5:9               root stylesheet
+
+WARNING: The `govuk-text-colour` mixin is deprecated. Use `color: govuk-colour(text)` instead. To silence this warning, update $govuk-suppressed-warnings with key: "govuk-text-colour"
+    node_modules/govuk-frontend/dist/govuk/settings/_warnings.scss 52:5               -warning()
+    node_modules/govuk-frontend/dist/govuk/helpers/_typography.scss 52:3              govuk-text-colour()
+    node_modules/@govuk-prototype-kit/common-templates/sass/_contents-list.scss 15:3  @import
+    .tmp/sass/_plugins.scss 5:9                                                       @import
+    node_modules/govuk-prototype-kit/lib/assets/sass/prototype.scss 5:9               @import
+    node_modules/govuk-prototype-kit/lib/assets/sass/unbranded.scss 18:9              root stylesheet
+
+WARNING: The `govuk-text-colour` mixin is deprecated. Use `color: govuk-colour(text)` instead. To silence this warning, update $govuk-suppressed-warnings with key: "govuk-text-colour"
+    node_modules/govuk-frontend/dist/govuk/settings/_warnings.scss 52:5               -warning()
+    node_modules/govuk-frontend/dist/govuk/helpers/_typography.scss 52:3              govuk-text-colour()
+    node_modules/@govuk-prototype-kit/common-templates/sass/_contents-list.scss 15:3  @import
+    .tmp/sass/_plugins.scss 5:9                                                       @import
+    node_modules/govuk-prototype-kit/lib/assets/sass/prototype.scss 5:9               root stylesheet
+
+WARNING: The `govuk-text-colour` mixin is deprecated. Use `color: govuk-colour(text)` instead. To silence this warning, update $govuk-suppressed-warnings with key: "govuk-text-colour"
+    node_modules/govuk-frontend/dist/govuk/settings/_warnings.scss 52:5               -warning()
+    node_modules/govuk-frontend/dist/govuk/helpers/_typography.scss 52:3              govuk-text-colour()
+    node_modules/@govuk-prototype-kit/common-templates/sass/_contents-list.scss 15:3  @import
+    .tmp/sass/_plugins.scss 5:9                                                       @import
+    node_modules/govuk-prototype-kit/lib/assets/sass/prototype.scss 5:9               @import
+    node_modules/govuk-prototype-kit/lib/assets/sass/unbranded.scss 18:9              root stylesheet
+
+
+[app/init-nunjucks.js] Configured Nunjucks paths:
+  - App views: /Users/melissarobinson/Documents/prototypes/prototype-template/app/views
+  - GOV.UK: /Users/melissarobinson/Documents/prototypes/prototype-template/node_modules/govuk-frontend/dist
+  - Dynamic Forms: /Users/melissarobinson/Documents/prototypes/prototype-template/node_modules/@planning-inspectorate/dynamic-forms/src
+WARNING: The `govuk-text-colour` mixin is deprecated. Use `color: govuk-colour(text)` instead. To silence this warning, update $govuk-suppressed-warnings with key: "govuk-text-colour"
+    node_modules/govuk-frontend/dist/govuk/settings/_warnings.scss 52:5               -warning()
+    node_modules/govuk-frontend/dist/govuk/helpers/_typography.scss 52:3              govuk-text-colour()
+    node_modules/@govuk-prototype-kit/common-templates/sass/_contents-list.scss 15:3  @import
+    .tmp/sass/_plugins.scss 5:9                                                       @import
+    node_modules/govuk-prototype-kit/lib/assets/sass/prototype.scss 5:9               root stylesheet
+
+WARNING: The `govuk-text-colour` mixin is deprecated. Use `color: govuk-colour(text)` instead. To silence this warning, update $govuk-suppressed-warnings with key: "govuk-text-colour"
+    node_modules/govuk-frontend/dist/govuk/settings/_warnings.scss 52:5               -warning()
+    node_modules/govuk-frontend/dist/govuk/helpers/_typography.scss 52:3              govuk-text-colour()
+    node_modules/@govuk-prototype-kit/common-templates/sass/_contents-list.scss 15:3  @import
+    .tmp/sass/_plugins.scss 5:9                                                       @import
+    node_modules/govuk-prototype-kit/lib/assets/sass/prototype.scss 5:9               @import
+    node_modules/govuk-prototype-kit/lib/assets/sass/unbranded.scss 18:9              root stylesheet
+
+You can manage your prototype at:
+http://localhost:3000/manage-prototype
+
+The Prototype Kit is now running at:
+http://localhost:3000
+
+(node:49698) [DEP0060] DeprecationWarning: The `util._extend` API is deprecated. Please use Object.assign() instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[patch-kit-nunjucks] Patching on first request
+[patch-kit-nunjucks] Old paths count: 9
+[patch-kit-nunjucks] New paths: [
+  '/Users/melissarobinson/Documents/prototypes/prototype-template/app/views',
+  '/Users/melissarobinson/Documents/prototypes/prototype-template/node_modules/govuk-frontend/dist',
+  '/Users/melissarobinson/Documents/prototypes/prototype-template/node_modules/@planning-inspectorate/dynamic-forms/src'
+]
+[patch-kit-nunjucks] Cleared loader cache
+[patch-kit-nunjucks] Successfully patched
+Error: template not found: views/error-handling/page-not-found
+    at subclass.getSource (/Users/melissarobinson/Documents/prototypes/prototype-template/node_modules/govuk-prototype-kit/lib/nunjucks/nunjucksLoader.js:73:21)
+    at /Users/melissarobinson/Documents/prototypes/prototype-template/node_modules/govuk-prototype-kit/node_modules/nunjucks/src/environment.js:276:29
+    at next (/Users/melissarobinson/Documents/prototypes/prototype-template/node_modules/govuk-prototype-kit/node_modules/nunjucks/src/lib.js:258:7)
+    at Object.asyncIter (/Users/melissarobinson/Documents/prototypes/prototype-template/node_modules/govuk-prototype-kit/node_modules/nunjucks/src/lib.js:263:3)
+    at Environment.getTemplate (/Users/melissarobinson/Documents/prototypes/prototype-template/node_modules/govuk-prototype-kit/node_modules/nunjucks/src/environment.js:259:9)
+    at Environment.render (/Users/melissarobinson/Documents/prototypes/prototype-template/node_modules/govuk-prototype-kit/node_modules/nunjucks/src/environment.js:295:10)
+    at NunjucksView.render (/Users/melissarobinson/Documents/prototypes/prototype-template/node_modules/govuk-prototype-kit/lib/nunjucks/nunjucksConfiguration.js:45:9)
+    at tryRender (/Users/melissarobinson/Documents/prototypes/prototype-template/node_modules/govuk-prototype-kit/node_modules/express/lib/application.js:657:10)
+    at Function.render (/Users/melissarobinson/Documents/prototypes/prototype-template/node_modules/govuk-prototype-kit/node_modules/express/lib/application.js:609:3)
+    at ServerResponse.render (/Users/melissarobinson/Documents/prototypes/prototype-template/node_modules/govuk-prototype-kit/node_modules/express/lib/response.js:1049:7)
+Restarting kit...
+
+[app/init-nunjucks.js] Configured Nunjucks paths:
+  - App views: /Users/melissarobinson/Documents/prototypes/prototype-template/app/views
+  - GOV.UK: /Users/melissarobinson/Documents/prototypes/prototype-template/node_modules/govuk-frontend/dist
+  - Dynamic Forms: /Users/melissarobinson/Documents/prototypes/prototype-template/node_modules/@planning-inspectorate/dynamic-forms/src
+WARNING: The `govuk-text-colour` mixin is deprecated. Use `color: govuk-colour(text)` instead. To silence this warning, update $govuk-suppressed-warnings with key: "govuk-text-colour"
+    node_modules/govuk-frontend/dist/govuk/settings/_warnings.scss 52:5               -warning()
+    node_modules/govuk-frontend/dist/govuk/helpers/_typography.scss 52:3              govuk-text-colour()
+    node_modules/@govuk-prototype-kit/common-templates/sass/_contents-list.scss 15:3  @import
+    .tmp/sass/_plugins.scss 5:9                                                       @import
+    node_modules/govuk-prototype-kit/lib/assets/sass/prototype.scss 5:9               root stylesheet
+
+WARNING: The `govuk-text-colour` mixin is deprecated. Use `color: govuk-colour(text)` instead. To silence this warning, update $govuk-suppressed-warnings with key: "govuk-text-colour"
+    node_modules/govuk-frontend/dist/govuk/settings/_warnings.scss 52:5               -warning()
+    node_modules/govuk-frontend/dist/govuk/helpers/_typography.scss 52:3              govuk-text-colour()
+    node_modules/@govuk-prototype-kit/common-templates/sass/_contents-list.scss 15:3  @import
+    .tmp/sass/_plugins.scss 5:9                                                       @import
+    node_modules/govuk-prototype-kit/lib/assets/sass/prototype.scss 5:9               @import
+    node_modules/govuk-prototype-kit/lib/assets/sass/unbranded.scss 18:9              root stylesheet
+
+You can manage your prototype at:
+http://localhost:3000/manage-prototype
+
+The Prototype Kit is now running at:
+http://localhost:3000
+
+Restarting kit...
+
+[app/init-nunjucks.js] Configured Nunjucks paths:
+  - App views: /Users/melissarobinson/Documents/prototypes/prototype-template/app/views
+  - GOV.UK: /Users/melissarobinson/Documents/prototypes/prototype-template/node_modules/govuk-frontend/dist
+  - Dynamic Forms: /Users/melissarobinson/Documents/prototypes/prototype-template/node_modules/@planning-inspectorate/dynamic-forms/src
+WARNING: The `govuk-text-colour` mixin is deprecated. Use `color: govuk-colour(text)` instead. To silence this warning, update $govuk-suppressed-warnings with key: "govuk-text-colour"
+    node_modules/govuk-frontend/dist/govuk/settings/_warnings.scss 52:5               -warning()
+    node_modules/govuk-frontend/dist/govuk/helpers/_typography.scss 52:3              govuk-text-colour()
+    node_modules/@govuk-prototype-kit/common-templates/sass/_contents-list.scss 15:3  @import
+    .tmp/sass/_plugins.scss 5:9                                                       @import
+    node_modules/govuk-prototype-kit/lib/assets/sass/prototype.scss 5:9               root stylesheet
+
+WARNING: The `govuk-text-colour` mixin is deprecated. Use `color: govuk-colour(text)` instead. To silence this warning, update $govuk-suppressed-warnings with key: "govuk-text-colour"
+    node_modules/govuk-frontend/dist/govuk/settings/_warnings.scss 52:5               -warning()
+    node_modules/govuk-frontend/dist/govuk/helpers/_typography.scss 52:3              govuk-text-colour()
+    node_modules/@govuk-prototype-kit/common-templates/sass/_contents-list.scss 15:3  @import
+    .tmp/sass/_plugins.scss 5:9                                                       @import
+    node_modules/govuk-prototype-kit/lib/assets/sass/prototype.scss 5:9               @import
+    node_modules/govuk-prototype-kit/lib/assets/sass/unbranded.scss 18:9              root stylesheet
+
+You can manage your prototype at:
+http://localhost:3000/manage-prototype
+
+The Prototype Kit is now running at:
+http://localhost:3000
+
+Restarting kit...
+
+[app/init-nunjucks.js] Configured Nunjucks paths:
+  - App views: /Users/melissarobinson/Documents/prototypes/prototype-template/app/views
+  - GOV.UK: /Users/melissarobinson/Documents/prototypes/prototype-template/node_modules/govuk-frontend/dist
+  - Dynamic Forms: /Users/melissarobinson/Documents/prototypes/prototype-template/node_modules/@planning-inspectorate/dynamic-forms/src
+  - Kit layouts: /Users/melissarobinson/Documents/prototypes/prototype-template/node_modules/govuk-prototype-kit/lib/nunjucks
+WARNING: The `govuk-text-colour` mixin is deprecated. Use `color: govuk-colour(text)` instead. To silence this warning, update $govuk-suppressed-warnings with key: "govuk-text-colour"
+    node_modules/govuk-frontend/dist/govuk/settings/_warnings.scss 52:5               -warning()
+    node_modules/govuk-frontend/dist/govuk/helpers/_typography.scss 52:3              govuk-text-colour()
+    node_modules/@govuk-prototype-kit/common-templates/sass/_contents-list.scss 15:3  @import
+    .tmp/sass/_plugins.scss 5:9                                                       @import
+    node_modules/govuk-prototype-kit/lib/assets/sass/prototype.scss 5:9               root stylesheet
+

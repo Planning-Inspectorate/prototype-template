@@ -3,6 +3,10 @@
 // https://prototype-kit.service.gov.uk/docs/create-routes
 //
 
+// MUST be first import - initializes Nunjucks before kit loads
+import './init-nunjucks.js';
+
+import patchKitNunjucks from './middleware/patch-kit-nunjucks.js';
 import {createRoutes} from "./views/cases/index.js";
 import govukPrototypeKit from "govuk-prototype-kit";
 import {applyAzureHostingFix} from "./azure-hosting-fix.js";
@@ -10,6 +14,9 @@ import {applyAzureHostingFix} from "./azure-hosting-fix.js";
 applyAzureHostingFix();
 
 const router = govukPrototypeKit.requests.setupRouter();
+
+// Patch kit's Nunjucks on first request - includes cache clear
+router.use(patchKitNunjucks());
 
 router.use((req, res, next) => {
    if (!req.session?.cases) {
