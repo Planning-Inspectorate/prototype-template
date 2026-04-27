@@ -7,11 +7,17 @@ export function createJourney(req, response, questions) {
 		journeyId: JOURNEY_ID,
 		sections: [
 			new Section('Questions', 'questions')
-				.addQuestion(questions.reference)
-				.addQuestion(questions.howManyApplicants)
-				.addQuestion(questions.submissionDate)
-				.withCondition(whenQuestionHasAnswer(questions.howManyApplicants, '5'))
-				.addQuestion(questions.description)
+				.addQuestion(questions.caseOfficer)
+				.addQuestion(questions.planTitle)
+				.addQuestion(questions.planType)
+				.addQuestion(questions.lpa)
+				.addQuestion(questions.anotherLPA)
+				.withCondition(whenQuestionHasAnswer(questions.anotherLPA, 'yes'))
+				.addQuestion(questions.secondLPA)
+				.addQuestion(questions.mainContactFirstName)
+				.addQuestion(questions.mainContactLastName)
+				.addQuestion(questions.mainContactEmail)
+				.addQuestion(questions.mainContactPhoneNumber)
 		],
 		taskListUrl: 'check-your-answers',
 		journeyTemplate: 'layouts/layout-journey.njk',
