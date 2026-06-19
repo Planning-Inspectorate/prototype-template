@@ -1,0 +1,130 @@
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{#
+    Recursive macro that renders the collapsible folder hierarchy.
+    A folder with children is wrapped in a <details> element so it can be
+    expanded/collapsed. The folder for the current view is highlighted.
+#}
+{% macro folderTree(folder, currentId, breadcrumbIds) %}
+    {% set isCurrent = folder.id === currentId %}
+    {% set isOpen = folder.id in breadcrumbIds %}
+    <li class="govuk-!-margin-bottom-1">
+        {% if folder.folders and folder.folders.length > 0 %}
+            <details class="govuk-details govuk-!-margin-bottom-1" {% if isOpen %}open{% endif %}>
+                <summary class="govuk-details__summary">
+                    <span class="govuk-details__summary-text">
+                        {% if isCurrent %}
+                            <span class="govuk-!-font-weight-bold">{{ folder.name }}</span>
+                        {% else %}
+                            <a class="govuk-link" href="?folder={{ folder.id }}">{{ folder.name }}</a>
+                        {% endif %}
+                    </span>
+                </summary>
+                <div class="govuk-details__text govuk-!-padding-top-0 govuk-!-padding-bottom-0">
+                    <ul class="govuk-list">
+                        {% for child in folder.folders %}
+                            {{ folderTree(child, currentId, breadcrumbIds) }}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </details>
+        {% else %}
+            {% if isCurrent %}
+                <span class="govuk-!-font-weight-bold">{{ folder.name }}</span>
+            {% else %}
+                <a class="govuk-link" href="?folder={{ folder.id }}">{{ folder.name }}</a>
+            {% endif %}
+        {% endif %}
+    </li>
+{% endmacro %}
+
+{# Collect the breadcrumb folder ids so the tree opens to the current folder #}
+{% set breadcrumbIds = [] %}
+{% for crumb in breadcrumb %}
+    {% set breadcrumbIds = (breadcrumbIds.push(crumb.id), breadcrumbIds) %}
+{% endfor %}
+
+<div class="govuk-grid-row">
+    {# ---------- Left column: collapsible folder hierarchy ---------- #}
+    <div class="govuk-grid-column-one-third">
+        <h2 class="govuk-heading-m">Folders</h2>
+        <nav aria-label="Folder hierarchy">
+            <ul class="govuk-list">
+                {{ folderTree(fileTree, currentFolder.id, breadcrumbIds) }}
+            </ul>
+        </nav>
+    </div>
+
+    {# ---------- Right column: files in the current folder ---------- #}
+    <div class="govuk-grid-column-two-thirds">
+        {# Breadcrumb of the current location #}
+        <nav class="govuk-breadcrumbs" aria-label="Current location">
+            <ol class="govuk-breadcrumbs__list">
+                {% for crumb in breadcrumb %}
+                    <li class="govuk-breadcrumbs__list-item">
+                        {% if loop.last %}
+                            {{ crumb.name }}
+                        {% else %}
+                            <a class="govuk-breadcrumbs__link" href="?folder={{ crumb.id }}">{{ crumb.name }}</a>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ol>
+        </nav>
+
+        <h2 class="govuk-heading-m">{{ currentFolder.name }}</h2>
+
+        <form method="post" action="#">
+            {% if currentFolder.files and currentFolder.files.length > 0 %}
+                <table class="govuk-table">
+                    <caption class="govuk-visually-hidden">Files in {{ currentFolder.name }}</caption>
+                    <thead class="govuk-table__head">
+                        <tr class="govuk-table__row">
+                            <th scope="col" class="govuk-table__header" style="width: 20px; padding-right: 0;">
+                                <span class="govuk-visually-hidden">Select</span>
+                            </th>
+                            <th scope="col" class="govuk-table__header">File name</th>
+                            <th scope="col" class="govuk-table__header">Size</th>
+                            <th scope="col" class="govuk-table__header">Last modified</th>
+                            <th scope="col" class="govuk-table__header">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="govuk-table__body">
+                        {% for file in currentFolder.files %}
+                            <tr class="govuk-table__row">
+                                <td class="govuk-table__cell" style="vertical-align: middle; width: 20px; padding-right: 0;">
+                                    <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+                                        <div class="govuk-checkboxes__item" style="margin-bottom: 0; min-height: 0;">
+                                            <input class="govuk-checkboxes__input" id="select-{{ file.id }}"
+                                                   name="selectedFiles" type="checkbox" value="{{ file.id }}">
+                                            <label class="govuk-label govuk-checkboxes__label" for="select-{{ file.id }}" style="padding: 0;">
+                                                <span class="govuk-visually-hidden">Select {{ file.name }}</span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="govuk-table__cell" style="vertical-align: middle;">
+                                    <a class="govuk-link" href="#open-{{ file.id }}">{{ file.name }}</a>
+                                </td>
+                                <td class="govuk-table__cell" style="vertical-align: middle;">{{ file.size }}</td>
+                                <td class="govuk-table__cell" style="vertical-align: middle;">{{ file.modified }}</td>
+                                <td class="govuk-table__cell" style="vertical-align: middle;">
+                                    <a class="govuk-link govuk-!-margin-right-2" href="#open-{{ file.id }}">Open</a>
+                                    <a class="govuk-link govuk-link--no-visited-state" href="#delete-{{ file.id }}">Delete</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+                <div class="govuk-button-group">
+                    {{ govukButton({ text: "Move selected", classes: "govuk-button--secondary" }) }}
+                    {{ govukButton({ text: "Download selected", classes: "govuk-button--secondary" }) }}
+                    {{ govukButton({ text: "Delete selected", classes: "govuk-button--warning" }) }}
+                </div>
+            {% else %}
+                <p class="govuk-body">There are no files in this folder.</p>
+            {% endif %}
+        </form>
+    </div>
+</div>

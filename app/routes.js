@@ -4,6 +4,7 @@
 //
 
 import {createRoutes} from "./views/cases/index.js";
+import {createRoutes as createFileRoutes} from "./views/file-manager/index.js";
 import govukPrototypeKit from "govuk-prototype-kit";
 import {applyAzureHostingFix} from "./azure-hosting-fix.js";
 
@@ -35,3 +36,4 @@ router.use((req, res, next) => {
 // Add your routes here
 
 router.use('/my-journey', createRoutes());
+router.use('/file-manager', createFileRoutes());
