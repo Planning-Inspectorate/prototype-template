@@ -1,0 +1,51 @@
+{% extends "inspector/layout.njk" %}
+{% from "inspector/prep-pack-blocks.njk" import prepBlock %}
+
+{% set pageTitle = section.title %}
+{% set backLink = "/inspector/cases/" + pack.caseId + "/preparation-pack" %}
+
+{% block content %}
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-quarter">
+			<nav class="pins-side-nav" aria-label="Preparation pack sections">
+				<p class="pins-side-nav__heading">Preparation pack</p>
+				<ul class="pins-side-nav__list">
+					{% for s in pack.sections %}
+						<li class="pins-side-nav__item {% if s.slug === section.slug %}pins-side-nav__item--active{% endif %}">
+							<a href="/inspector/cases/{{ pack.caseId }}/preparation-pack/{{ s.slug }}">{{ s.number }}. {{ s.title }}</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</nav>
+		</div>
+
+		<div class="govuk-grid-column-three-quarters">
+			<span class="govuk-caption-l">Section {{ section.number }} &bull; Appeal {{ pack.reference }}</span>
+			<h1 class="govuk-heading-xl govuk-!-margin-bottom-6">{{ section.title }}</h1>
+
+			{% for block in section.blocks %}
+				{{ prepBlock(block) }}
+			{% endfor %}
+
+			<nav class="pins-pager govuk-!-margin-top-8" aria-label="Pagination">
+				{% if previous %}
+					<div class="pins-pager__prev">
+						<a class="govuk-link" href="/inspector/cases/{{ pack.caseId }}/preparation-pack/{{ previous.slug }}">
+							<span class="pins-pager__label">Previous</span>
+							<span class="pins-pager__title">{{ previous.number }}. {{ previous.title }}</span>
+						</a>
+					</div>
+				{% endif %}
+				{% if next %}
+					<div class="pins-pager__next">
+						<a class="govuk-link" href="/inspector/cases/{{ pack.caseId }}/preparation-pack/{{ next.slug }}">
+							<span class="pins-pager__label">Next</span>
+							<span class="pins-pager__title">{{ next.number }}. {{ next.title }}</span>
+						</a>
+					</div>
+				{% endif %}
+			</nav>
+		</div>
+	</div>
+{% endblock %}
+

@@ -1,0 +1,71 @@
+{% extends "inspector/layout.njk" %}
+
+{% set pageTitle = "My cases" %}
+
+{% block content %}
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-full">
+			<span class="govuk-caption-l">Appeals workspace</span>
+			<h1 class="govuk-heading-xl">Cases assigned to me</h1>
+		</div>
+	</div>
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			<div class="pins-stat-card">
+				<span class="pins-stat-card__label">Open cases</span>
+				<span class="pins-stat-card__value">{{ cases | length }}</span>
+			</div>
+		</div>
+		<div class="govuk-grid-column-one-third">
+			<div class="pins-stat-card">
+				<span class="pins-stat-card__label">Due this week</span>
+				<span class="pins-stat-card__value pins-stat-card__value--warning">2</span>
+			</div>
+		</div>
+		<div class="govuk-grid-column-one-third">
+			<div class="pins-stat-card">
+				<span class="pins-stat-card__label">Site visits to plan</span>
+				<span class="pins-stat-card__value">1</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="govuk-grid-row govuk-!-margin-top-6">
+		<div class="govuk-grid-column-full">
+			<table class="govuk-table">
+				<caption class="govuk-table__caption govuk-table__caption--m">My cases</caption>
+				<thead class="govuk-table__head">
+					<tr class="govuk-table__row">
+						<th scope="col" class="govuk-table__header">Reference</th>
+						<th scope="col" class="govuk-table__header">Type and procedure</th>
+						<th scope="col" class="govuk-table__header">Status</th>
+						<th scope="col" class="govuk-table__header">Due</th>
+						<th scope="col" class="govuk-table__header"><span class="govuk-visually-hidden">Actions</span></th>
+					</tr>
+				</thead>
+				<tbody class="govuk-table__body">
+					{% for c in cases %}
+						<tr class="govuk-table__row">
+							<th scope="row" class="govuk-table__header">
+								<a class="govuk-link" href="/inspector/cases/{{ c.id }}">{{ c.reference }}</a>
+							</th>
+							<td class="govuk-table__cell">
+								{{ c.type }}<br>
+								<span class="govuk-hint govuk-!-margin-bottom-0">{{ c.procedure }} &bull; {{ c.location }}</span>
+							</td>
+							<td class="govuk-table__cell">
+								<strong class="govuk-tag {{ c.statusTagClass }}">{{ c.status }}</strong>
+							</td>
+							<td class="govuk-table__cell">{{ c.due }}</td>
+							<td class="govuk-table__cell">
+								<a class="govuk-link" href="/inspector/cases/{{ c.id }}">View<span class="govuk-visually-hidden"> {{ c.reference }}</span></a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}
+

@@ -1,0 +1,79 @@
+{% extends "inspector/layout.njk" %}
+
+{% set pageTitle = "Preparation pack" %}
+{% set backLink = "/inspector/cases/" + pack.caseId %}
+
+{% block content %}
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-full">
+			<span class="govuk-caption-l">Inspector preparation pack &bull; Appeal {{ pack.reference }}</span>
+			<h1 class="govuk-heading-xl govuk-!-margin-bottom-2">{{ pack.siteAddress }}</h1>
+			<p class="govuk-body-l govuk-!-margin-bottom-6">{{ pack.subtitle }}</p>
+		</div>
+	</div>
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-two-thirds">
+			<div class="pins-note pins-note--grey">
+				<p class="pins-note__title">Case at a glance</p>
+				<p class="pins-note__body govuk-!-margin-bottom-0">{{ pack.glance }}</p>
+			</div>
+
+			<div class="pins-note pins-note--blue">
+				<p class="pins-note__title">Likely main issue</p>
+				<p class="pins-note__body govuk-!-margin-bottom-0">{{ pack.likelyMainIssue }}</p>
+			</div>
+
+			<dl class="govuk-summary-list govuk-!-margin-top-6">
+				{% for row in pack.keyFields %}
+					<div class="govuk-summary-list__row">
+						<dt class="govuk-summary-list__key">{{ row.field }}</dt>
+						<dd class="govuk-summary-list__value">{{ row.detail }}</dd>
+					</div>
+				{% endfor %}
+			</dl>
+			<p class="govuk-body-s pins-source">{{ pack.sourceLine }}</p>
+
+			<div class="pins-note pins-note--red govuk-!-margin-top-4">
+				<p class="pins-note__title">{{ pack.evidenceControlNote.title }}</p>
+				<p class="pins-note__body govuk-!-margin-bottom-0">{{ pack.evidenceControlNote.body }}</p>
+			</div>
+		</div>
+
+		<div class="govuk-grid-column-one-third">
+			<aside class="pins-ai-panel" aria-label="AI case assistant">
+				<p class="pins-ai-panel__eyebrow">AI case assistant</p>
+				<h2 class="pins-ai-panel__heading">Source-cited preparation pack</h2>
+				<ul class="pins-ai-panel__list">
+					<li>Neutral synthesis of both parties' cases</li>
+					<li>Structured site-visit inspection plan</li>
+					<li>Policy and decision framework</li>
+					<li>Evidence gaps and fairness safeguards</li>
+				</ul>
+				<a href="#" role="button" draggable="false" class="govuk-button pins-ai-panel__button" data-module="govuk-button">
+					Open cited sources
+				</a>
+			</aside>
+		</div>
+	</div>
+
+	<div class="govuk-grid-row govuk-!-margin-top-4">
+		<div class="govuk-grid-column-full">
+			<h2 class="govuk-heading-l">Preparation pack sections</h2>
+			<ul class="govuk-list pins-section-cards">
+				{% for section in pack.sections %}
+					<li class="pins-section-card">
+						<span class="pins-section-card__number">{{ section.number }}</span>
+						<div class="pins-section-card__body">
+							<h3 class="pins-section-card__title govuk-heading-m govuk-!-margin-bottom-1">
+								<a class="govuk-link" href="/inspector/cases/{{ pack.caseId }}/preparation-pack/{{ section.slug }}">{{ section.title }}</a>
+							</h3>
+							<p class="govuk-body govuk-!-margin-bottom-0">{{ section.summary }}</p>
+						</div>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+{% endblock %}
+

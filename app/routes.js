@@ -4,6 +4,7 @@
 //
 
 import {createRoutes} from "./views/cases/index.js";
+import {createRoutes as createInspectorRoutes} from "./views/inspector/index.js";
 import govukPrototypeKit from "govuk-prototype-kit";
 import {applyAzureHostingFix} from "./azure-hosting-fix.js";
 
@@ -35,3 +36,7 @@ router.use((req, res, next) => {
 // Add your routes here
 
 router.use('/my-journey', createRoutes());
+
+// Inspector service prototype - "cases assigned to me"
+router.use('/inspector', createInspectorRoutes());
+

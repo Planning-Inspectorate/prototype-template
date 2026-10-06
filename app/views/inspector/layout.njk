@@ -1,0 +1,41 @@
+{% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
+
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+{% from "layouts/ui/header/pins-header.njk" import pinsHeader %}
+{% from "layouts/ui/footer/pins-footer.njk" import pinsFooter %}
+
+{% block pageTitle %}
+	{% if pageTitle %}{{ pageTitle }} - {% endif %}{{ serviceName }} - GOV.UK
+{% endblock %}
+
+{% block header %}
+	{{ pinsHeader({isExternal: true}) }}
+
+	{{ govukServiceNavigation({
+		serviceName: serviceName,
+		serviceUrl: "/inspector",
+		classes: 'pins-service-navigation',
+		navigation: [
+			{ href: "/inspector", text: "Dashboard", active: activeNav === 'dashboard' },
+			{ href: "/inspector", text: "My cases", active: activeNav === 'my-cases' },
+			{ href: "/inspector", text: "Visits", active: activeNav === 'visits' },
+			{ href: "/inspector", text: "Drafting", active: activeNav === 'drafting' },
+			{ href: "/inspector", text: "QA", active: activeNav === 'qa' }
+		]
+	}) }}
+{% endblock %}
+
+{% block beforeContent %}
+	<script {% if cspNonce %}nonce={{ cspNonce }}{% endif %}>
+		document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' govuk-frontend-supported' : '');
+	</script>
+	{% if backLink %}
+		{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+		{{ govukBackLink({ href: backLink }) }}
+	{% endif %}
+{% endblock %}
+
+{% block footer %}
+	{{ pinsFooter(config.footerLinks) }}
+{% endblock %}
+

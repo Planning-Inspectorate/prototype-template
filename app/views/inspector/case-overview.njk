@@ -1,0 +1,77 @@
+{% extends "inspector/layout.njk" %}
+
+{% set pageTitle = case.reference %}
+{% set backLink = "/inspector" %}
+
+{% block content %}
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-quarter">
+			<nav class="pins-side-nav" aria-label="Appeals workspace">
+				<p class="pins-side-nav__heading">Appeals workspace</p>
+				<ul class="pins-side-nav__list">
+					<li class="pins-side-nav__item pins-side-nav__item--active"><a href="/inspector/cases/{{ case.id }}">Case overview</a></li>
+					<li class="pins-side-nav__item"><a href="/inspector/cases/{{ case.id }}/preparation-pack">Preparation pack</a></li>
+					<li class="pins-side-nav__item"><a href="#">Evidence</a></li>
+					<li class="pins-side-nav__item"><a href="#">Visit preparation</a></li>
+					<li class="pins-side-nav__item"><a href="#">Site notes</a></li>
+					<li class="pins-side-nav__item"><a href="#">Draft decision</a></li>
+					<li class="pins-side-nav__item"><a href="#">Submit for QA</a></li>
+				</ul>
+			</nav>
+		</div>
+
+		<div class="govuk-grid-column-one-half">
+			<h1 class="govuk-heading-l govuk-!-margin-bottom-2">{{ case.reference }}</h1>
+			<p class="govuk-body govuk-!-margin-bottom-6">
+				{{ case.type }} &bull; {{ case.procedure }} &bull; {{ case.siteVisit }}
+			</p>
+
+			<div class="pins-summary-cards">
+				<div class="pins-summary-card">
+					<span class="pins-summary-card__label">Status</span>
+					<span class="pins-summary-card__value">{{ case.status }}</span>
+				</div>
+				<div class="pins-summary-card">
+					<span class="pins-summary-card__label">Due</span>
+					<span class="pins-summary-card__value pins-summary-card__value--warning">{{ case.due }}</span>
+				</div>
+				<div class="pins-summary-card">
+					<span class="pins-summary-card__label">Evidence</span>
+					<span class="pins-summary-card__value">{{ case.evidenceItems }} items</span>
+				</div>
+			</div>
+
+			<div class="pins-task-flow govuk-!-margin-top-6">
+				<h2 class="govuk-heading-m">Inspector task flow</h2>
+				<ol class="govuk-list pins-task-flow__list">
+					{% for task in case.taskFlow %}
+						<li>{{ loop.index }} {{ task }}</li>
+					{% endfor %}
+				</ol>
+			</div>
+
+			<a href="/inspector/cases/{{ case.id }}/preparation-pack" role="button" draggable="false" class="govuk-button govuk-button--secondary govuk-!-margin-top-4" data-module="govuk-button">
+				View preparation pack
+			</a>
+		</div>
+
+		<div class="govuk-grid-column-one-quarter">
+			<aside class="pins-ai-panel" aria-label="AI case assistant">
+				<p class="pins-ai-panel__eyebrow">AI case assistant</p>
+				<h2 class="pins-ai-panel__heading">Source-cited case briefing</h2>
+				<ul class="pins-ai-panel__list">
+					<li>Key case facts and disputed issues</li>
+					<li>Relevant ITM and Library guidance</li>
+					<li>National and local policy passages</li>
+					<li>Conflicts, gaps and superseded content</li>
+				</ul>
+				<a href="#" role="button" draggable="false" class="govuk-button pins-ai-panel__button" data-module="govuk-button">
+					Open cited sources
+				</a>
+			</aside>
+		</div>
+	</div>
+{% endblock %}
+
+
+

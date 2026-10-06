@@ -1,0 +1,64 @@
+{#
+	Renders an array of content "blocks" used by the preparation-pack pages.
+	Supported types: note, paragraphs, table, checklist, steps.
+#}
+
+{% macro prepBlock(block) %}
+	{% if block.type === 'note' %}
+		<div class="pins-note pins-note--{{ block.variant or 'blue' }}">
+			<p class="pins-note__title">{{ block.title }}</p>
+			<p class="pins-note__body govuk-!-margin-bottom-0">{{ block.body }}</p>
+		</div>
+
+	{% elif block.type === 'paragraphs' %}
+		{% if block.heading %}<h2 class="govuk-heading-m">{{ block.heading }}</h2>{% endif %}
+		{% for item in block.items %}
+			<p class="govuk-body">{{ item }}</p>
+		{% endfor %}
+		{% if block.source %}<p class="govuk-body-s pins-source">{{ block.source }}</p>{% endif %}
+
+	{% elif block.type === 'table' %}
+		<table class="govuk-table pins-block-table">
+			{% if block.caption %}
+				<caption class="govuk-table__caption govuk-table__caption--m">{{ block.caption }}</caption>
+			{% endif %}
+			<thead class="govuk-table__head">
+				<tr class="govuk-table__row">
+					{% for header in block.headers %}
+						<th scope="col" class="govuk-table__header">{{ header }}</th>
+					{% endfor %}
+				</tr>
+			</thead>
+			<tbody class="govuk-table__body">
+				{% for row in block.rows %}
+					<tr class="govuk-table__row">
+						{% for cell in row %}
+							{% if loop.first %}
+								<th scope="row" class="govuk-table__header">{{ cell }}</th>
+							{% else %}
+								<td class="govuk-table__cell">{{ cell }}</td>
+							{% endif %}
+						{% endfor %}
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+	{% elif block.type === 'checklist' %}
+		{% if block.heading %}<h2 class="govuk-heading-m">{{ block.heading }}</h2>{% endif %}
+		<ul class="govuk-list pins-checklist">
+			{% for item in block.items %}
+				<li class="pins-checklist__item">{{ item }}</li>
+			{% endfor %}
+		</ul>
+
+	{% elif block.type === 'steps' %}
+		{% if block.heading %}<h2 class="govuk-heading-m">{{ block.heading }}</h2>{% endif %}
+		<ol class="govuk-list govuk-list--number pins-steps">
+			{% for item in block.items %}
+				<li>{{ item }}</li>
+			{% endfor %}
+		</ol>
+	{% endif %}
+{% endmacro %}
+

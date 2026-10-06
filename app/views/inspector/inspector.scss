@@ -1,0 +1,312 @@
+@use '../../../node_modules/govuk-frontend/dist/govuk/index' as *;
+
+// Dashboard stat cards
+.pins-stat-card {
+	border: 1px solid $govuk-border-colour;
+	border-radius: 6px;
+	padding: govuk-spacing(4);
+	margin-bottom: govuk-spacing(3);
+
+	&__label {
+		display: block;
+		@include govuk-font(19);
+		color: $govuk-secondary-text-colour;
+	}
+
+	&__value {
+		display: block;
+		@include govuk-font(48, $weight: bold);
+		color: govuk-colour("blue");
+
+		&--warning {
+			color: govuk-colour("yellow");
+		}
+	}
+}
+
+// Case overview summary cards
+.pins-summary-cards {
+	display: flex;
+	flex-wrap: wrap;
+	gap: govuk-spacing(3);
+}
+
+.pins-summary-card {
+	flex: 1 1 140px;
+	border: 1px solid $govuk-border-colour;
+	border-radius: 6px;
+	padding: govuk-spacing(3);
+
+	&__label {
+		display: block;
+		@include govuk-font(16);
+		color: $govuk-secondary-text-colour;
+		margin-bottom: govuk-spacing(1);
+	}
+
+	&__value {
+		display: block;
+		@include govuk-font(27, $weight: bold);
+		color: govuk-colour("blue");
+
+		&--warning {
+			color: govuk-colour("yellow");
+		}
+	}
+}
+
+// Side navigation on case pages
+.pins-side-nav {
+	background-color: govuk-colour("black", $variant: "tint-95");
+	border: 1px solid $govuk-border-colour;
+	border-radius: 6px;
+	padding: govuk-spacing(3);
+
+	&__heading {
+		@include govuk-font(16, $weight: bold);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		color: $govuk-secondary-text-colour;
+		margin: 0 0 govuk-spacing(3);
+	}
+
+	&__list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	&__item {
+		margin-bottom: govuk-spacing(1);
+
+		a {
+			display: block;
+			padding: govuk-spacing(2);
+			border-radius: 4px;
+			text-decoration: none;
+			@include govuk-font(19);
+			color: $govuk-text-colour;
+
+			&:hover {
+				background-color: govuk-colour("black", $variant: "tint-80");
+			}
+		}
+
+		&--active a,
+		&--active a:hover {
+			background-color: govuk-colour("blue");
+			color: govuk-colour("white");
+			font-weight: bold;
+		}
+	}
+}
+
+// Inspector task flow
+.pins-task-flow {
+	border: 1px solid $govuk-border-colour;
+	border-left: 6px solid govuk-colour("blue");
+	border-radius: 6px;
+	padding: govuk-spacing(4);
+
+	&__list li {
+		margin-bottom: govuk-spacing(1);
+	}
+}
+
+// AI case assistant panel
+.pins-ai-panel {
+	background-color: #1d2a3f;
+	color: govuk-colour("white");
+	border-radius: 6px;
+	padding: govuk-spacing(4);
+
+	&__eyebrow {
+		@include govuk-font(16, $weight: bold);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		margin: 0 0 govuk-spacing(2);
+		color: govuk-colour("white");
+	}
+
+	&__heading {
+		@include govuk-font(27, $weight: bold);
+		color: govuk-colour("white");
+		margin: 0 0 govuk-spacing(4);
+	}
+
+	&__list {
+		list-style: none;
+		margin: 0 0 govuk-spacing(4);
+		padding: 0;
+
+		li {
+			position: relative;
+			padding-left: govuk-spacing(3);
+			margin-bottom: govuk-spacing(2);
+			@include govuk-font(19);
+
+			&::before {
+				content: "\2022";
+				position: absolute;
+				left: 0;
+			}
+		}
+	}
+
+	&__button {
+		width: 100%;
+		text-align: center;
+		margin-bottom: 0;
+	}
+}
+
+// Callout notes used across the preparation pack
+.pins-note {
+	border: 1px solid $govuk-border-colour;
+	border-left: 6px solid govuk-colour("blue");
+	border-radius: 6px;
+	padding: govuk-spacing(3) govuk-spacing(4);
+	margin-bottom: govuk-spacing(4);
+
+	&__title {
+		@include govuk-font(19, $weight: bold);
+		margin: 0 0 govuk-spacing(1);
+	}
+
+	&__body {
+		@include govuk-font(19);
+	}
+
+	&--blue {
+		border-left-color: govuk-colour("blue");
+		background-color: #eef3f8;
+	}
+
+	&--grey {
+		border-left-color: $govuk-secondary-text-colour;
+		background-color: govuk-colour("black", $variant: "tint-95");
+	}
+
+	&--yellow {
+		border-left-color: govuk-colour("yellow");
+		background-color: #fef7e0;
+	}
+
+	&--red {
+		border-left-color: govuk-colour("red");
+		background-color: #fbeaea;
+	}
+}
+
+// Source attribution lines
+.pins-source {
+	color: $govuk-secondary-text-colour;
+	font-style: italic;
+	margin-top: govuk-spacing(2);
+}
+
+// Tables within a content block
+.pins-block-table {
+	margin-bottom: govuk-spacing(6);
+
+	.govuk-table__header,
+	.govuk-table__cell {
+		vertical-align: top;
+	}
+}
+
+// Tick-box checklist
+.pins-checklist {
+	margin-bottom: govuk-spacing(6);
+
+	&__item {
+		position: relative;
+		padding-left: govuk-spacing(6);
+		margin-bottom: govuk-spacing(2);
+		@include govuk-font(19);
+
+		&::before {
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 2px;
+			width: 20px;
+			height: 20px;
+			border: 2px solid $govuk-text-colour;
+			border-radius: 3px;
+		}
+	}
+}
+
+.pins-steps {
+	margin-bottom: govuk-spacing(6);
+
+	li {
+		margin-bottom: govuk-spacing(2);
+		@include govuk-font(19);
+	}
+}
+
+// Section cards on the pack overview
+.pins-section-cards {
+	margin: 0;
+	padding: 0;
+}
+
+.pins-section-card {
+	display: flex;
+	align-items: flex-start;
+	gap: govuk-spacing(4);
+	border: 1px solid $govuk-border-colour;
+	border-radius: 6px;
+	padding: govuk-spacing(3) govuk-spacing(4);
+	margin-bottom: govuk-spacing(3);
+
+	&__number {
+		flex: 0 0 auto;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		background-color: govuk-colour("blue");
+		color: govuk-colour("white");
+		@include govuk-font(19, $weight: bold);
+	}
+
+	&__body {
+		flex: 1 1 auto;
+	}
+}
+
+// Previous / next pager on section pages
+.pins-pager {
+	display: flex;
+	justify-content: space-between;
+	gap: govuk-spacing(4);
+	border-top: 1px solid $govuk-border-colour;
+	padding-top: govuk-spacing(4);
+
+	&__next {
+		margin-left: auto;
+		text-align: right;
+	}
+
+	&__label {
+		display: block;
+		@include govuk-font(16);
+		color: $govuk-secondary-text-colour;
+	}
+
+	&__title {
+		display: block;
+		@include govuk-font(19, $weight: bold);
+	}
+}
+
+
+
+
+
+
